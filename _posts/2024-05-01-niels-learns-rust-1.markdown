@@ -11,7 +11,7 @@ In this series of posts I plan to describe my journey to add number 34: Rust.
 
 ![rust crab](/assets/img/2024-05-01-rust-crab.webp)
 
-# Why learn yet another new language?
+## Why learn yet another new language?
 
 The more languages you know, the easier it becomes to pick up a new one. Patterns start repeating and improvements get more incremental. Getting the hang of functional programming takes a bit longer, but if you already know Haskell, Scala is easier to pick up and vice versa.
 
@@ -22,7 +22,7 @@ But I still always learn something new from picking up a new language. It may ha
 Even if you never use a language in practice, knowing what's out there makes you a better developer.
 
 
-# Why Rust?
+## Why Rust?
 
 So why learn Rust?
 
@@ -35,7 +35,7 @@ For most problems, the small performance price we pay for it is an easy choice, 
 I'm also curious to see how learning Rust will influence the way I design my code. Rust's way of doing memory management doesn't come for free. It depends on very strict rules to ensure memory safety, and so requires more up front design. The promise is that this will lead to better code. Will it?
 
 
-# Rust's approach to memory management
+## Rust's approach to memory management
 
 You can argue about whether Rust's approach is really a new, third, solution to this problem. It doesn't rely on a garbage collector and still automatically frees up memory for you, which at first made me think it was.
 
@@ -95,7 +95,7 @@ This value, `Foo { data: 42 }`, now owned by `b`, is dropped at the end of the `
 Try it on the Rust [playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=%23%5Bderive%28Debug%29%5D%0Astruct+Foo+%7B%0A++++data%3A+u32%2C%0A%7D%0A%0Aimpl+Drop+for+Foo+%7B%0A++++fn+drop%28%26mut+self%29+%7B%0A++++++++println%21%28%22Dropped+%7B%7D.%22%2C+self.data%29%3B%0A++++%7D%0A%7D%0A%0Afn+main%28%29+%7B%0A++++let+a+%3D+Foo+%7B+data%3A+42+%7D%3B%0A++++let+mut+b+%3D+Foo+%7B+data%3A+43+%7D%3B%0A++++println%21%28%22a%3A+%7B%3A%3F%7D%22%2C+a%29%3B%0A++++println%21%28%22b%3A+%7B%3A%3F%7D%22%2C+b%29%3B%0A++++b+%3D+a%3B%0A++++println%21%28%22b%3A+%7B%3A%3F%7D%22%2C+b%29%3B%0A%7D%0A%0A).
 
 
-# That sounds rather restrictive
+## That sounds rather restrictive
 
 It is. There are many perfectly correct C programs that don't conform to Rust's strict ownership rules. The rules *are* limiting, but we know many examples where imposing limits on our code eventually leads to better designs.
 
@@ -108,7 +108,7 @@ I'm only just starting to learn Rust, so I have no gut feeling for how limiting 
 If that's the case, learning Rust will have made me a better developer in any language.
 
 
-# The project {#the-project}
+## The project {#the-project}
 
 So, I want to learn Rust. I picked up [Programming Rust, 2nd Edition](https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/), which is excellent. It's pretty dense at times (which I like), but it all makes sense to me when I read it. I did a bunch of the exercises, which aren't too hard, but did I really *get* it? I didn't feel I did.
 

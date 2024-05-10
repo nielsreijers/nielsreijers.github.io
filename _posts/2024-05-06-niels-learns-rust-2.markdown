@@ -7,7 +7,7 @@ categories: blog
 
 This is part 2 of a series documenting my journey to learn Rust by porting my embedded Java virtual machine to it.
 
-# Installing Rust in a dev container
+## Installing Rust in a dev container
 
 This first step is installing Rust, which is easy with rustup:
 
@@ -55,7 +55,7 @@ The Rust project provides a Docker image we can use, and for normal Rust develop
 
 <br>
 
-# Rust for the AVR
+## Rust for the AVR
 
 This gives use a working Rust installation. Cargo can create a new project for us and run it:
 ![Hello World output](/assets/img/2024-05-06-hello-world.png)
@@ -98,7 +98,7 @@ It seems a bit wrong to start the project on a nightly build, but the code gener
 
 <br>
 
-# Running the code
+## Running the code
 
 Cargo can also run the program, but when we try this in the current version, we get this error:
 
@@ -125,7 +125,7 @@ For now I've place the compiled Avrora simulator (a single .jar file) directly 
 
 <br>
 
-# AVR "Hello, world"
+## AVR "Hello, world"
 
 The template generated the following "Hello, world" equivalent for the AVR for us:
 
