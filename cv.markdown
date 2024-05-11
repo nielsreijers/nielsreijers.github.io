@@ -1,0 +1,19 @@
+---
+layout: page
+title: CV
+permalink: /cv/
+---
+
+<table style="margin: 0 auto">
+    <tr>
+        <td>
+            <img src="/assets/cv/cv.png" width="200">
+        </td>
+        <td>
+            <a href="/assets/cv/NielsReijers-single-page.pdf">Single page version</a>
+            <br>
+            <br>
+            <a href="/assets/cv/NielsReijers-full-version.pdf">Full version</a>
+        </td>
+    </tr>
+</table>
