@@ -29,9 +29,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  nielsreijers
 linkedin_username: niels-reijers-4609602
 # Build settings
-theme: minima
+# 20240511 Niels Reijers: minima theme was pulled into the repository
+#theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
