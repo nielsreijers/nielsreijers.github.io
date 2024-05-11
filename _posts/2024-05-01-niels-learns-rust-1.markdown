@@ -54,7 +54,7 @@ Rust can do this because its ownership rules ensure there is always only one own
 
 This little example:
 
-```
+{% highlight rust %}
 #[derive(Debug)]
 struct Foo {
     data: u32,
@@ -74,7 +74,7 @@ fn main() {
     b = a;
     println!("b: {:?}", b);
 }
-```
+{% endhighlight %}
 
 will print:
 

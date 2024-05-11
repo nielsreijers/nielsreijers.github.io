@@ -18,20 +18,20 @@ In this post I will add debug prints. I thought this would be an easy task, but 
 
 In normal Rust, printing to the console is easy: `println!` prints to stdout and `eprintln!()` to stderr. For quick debugging `dbg!()` is very convenient: it returns the value passed to it, printing it to stderr in the process:
 
-```
+{% highlight rust %}
 fn main() {
     let a = 42;
     let b = dbg!(a);
     println!("b = {}", b);
 }
-```
+{% endhighlight %}
 
 This will print:
 
-```
+{% highlight text %}
 [src/main.rs:3] a = 42
 b = 42
-```
+{% endhighlight %}
 
 The first line is sent to stderr, the second to stdout.
 
@@ -78,7 +78,7 @@ This got me curious, what would those safe patterns be? A little more searching 
 
 The way to use them is pretty straightforward. `Mutex` is similar to `RwLock` but doesn't distinguish between readers and writers. Here's an example of how `RwLock` works:
 
-```
+{% highlight rust %}
 use std::sync::RwLock;
 
 static LOCK: RwLock<u8> = RwLock::new(5);
@@ -110,7 +110,8 @@ fn main() {
 
     println!("Done.");
 }
-```
+{% endhighlight %}
+
 Try it on the [Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=use+std%3A%3Async%3A%3ARwLock%3B%0A%0Astatic+LOCK%3A+RwLock%3Cu8%3E+%3D+RwLock%3A%3Anew%285%29%3B%0A%0Afn+main%28%29+%7B%0A++++%2F%2F+many+reader+locks+can+be+held+at+once%0A++++%7B%0A++++++++let+r1+%3D+LOCK.read%28%29.unwrap%28%29%3B%0A++++++++let+r2+%3D+LOCK.read%28%29.unwrap%28%29%3B%0A++++++++assert_eq%21%28*r1%2C+5%29%3B%0A++++++++assert_eq%21%28*r2%2C+5%29%3B%0A++++%7D+%2F%2F+read+locks+are+dropped+at+this+point%0A++++%0A++++%2F%2F+only+one+write+lock+may+be+held%2C+however%0A++++%7B%0A++++++++let+mut+w+%3D+LOCK.write%28%29.unwrap%28%29%3B%0A++++++++*w+%2B%3D+1%3B%0A++++++++assert_eq%21%28*w%2C+6%29%3B%0A++++%7D+%2F%2F+write+lock+is+dropped+at+this+point%0A%0A++++%2F%2F+so+we+can+get+a+new+write+lock+in+this+block%2C%0A++++%2F%2F+but+merging+these+two+blocks+into+one+would%0A++++%2F%2F+cause+a+deadlock%0A++++%7B%0A++++++++let+mut+w2+%3D+LOCK.write%28%29.unwrap%28%29%3B%0A++++++++*w2+%2B%3D+1%3B%0A++++++++assert_eq%21%28*w2%2C+7%29%3B%0A++++%7D+%2F%2F%0A%0A++++println%21%28%22Done.%22%29%3B%0A%7D)
 
 We can wrap a resource in a `RwLock`, and get either multiple read-only references to it, or a single mutable reference.
@@ -143,15 +144,15 @@ The [documentation](https://docs.rust-embedded.org/book/intro/no-std.html) expla
 
 The second, [libstd](https://doc.rust-lang.org/std/), is much larger and contains many constructs that rely on an operating system. It is a superset of libcore, which we can see by looking at the source in [std/src/lib.rs](https://github.com/rust-lang/rust/blob/master/library/std/src/lib.rs):
 
-```
+{% highlight rust %}
 #[stable(feature = "rust1", since = "1.0.0")]
 pub use core::any;
 #[stable(feature = "core_array", since = "1.36.0")]
 pub use core::array;
 #[unstable(feature = "async_iterator", issue = "79024")]
 pub use core::async_iter;
-....
-```
+...
+{% endhighlight %}
 
 This is a common pattern in Rust: `pub use` imports features from another crate or module, and exports them again in the current. In short, everything that's exported by libcore, is also exported by libstd.
 
@@ -164,7 +165,7 @@ Since we can't use `RwLock<T>`, we have to use a `static mut debugbuf1` variable
 
 A first attempt might look like this:
 
-```
+{% highlight rust %}
 #[allow(non_upper_case_globals)]
 static mut debugbuf1: u8 = 0;
 
@@ -179,16 +180,16 @@ fn main() -> ! {
         arduino_hal::delay_ms(1000);
     }
 }
-```
+{% endhighlight %}
 
 The `#[allow(non_upper_case_globals)]` suppresses a warning because Rust likes globals to have upper case names. 
 
 To test it, add the `c-print` monitor to `.cargo/config.toml` and remove the others:
 
-```
+{% highlight text %}
 [target.'cfg(target_arch = "avr")']
 runner = "java -jar ../avrora/avrora-beta-1.7.117.jar -monitors=c-print -single -platform=mica2"
-```
+{% endhighlight %}
 
 Unfortunately, this doesn't work:
 
@@ -208,7 +209,7 @@ It needs a `*mut` instead of a `&mut`: a raw pointer instead of a reference. Raw
 
 Initially I tried this, since a `&T` reference can be implicitly coerced to a `*T` raw pointer. Using the raw pointer is unsafe, but just creating it is not.
 
-```
+{% highlight rust %}
 use core::ptr::write_volatile;
 
 #[allow(non_upper_case_globals)]
@@ -225,7 +226,7 @@ fn main() -> ! {
         arduino_hal::delay_ms(1000);
     }
 }
-```
+{% endhighlight %}
 
 It compiles, but Rust is still a little unhappy:
 
@@ -249,7 +250,7 @@ It works, we finally have some (still rather boring) output!
 
 The c-print monitor has a number of debug print commands that don't need any parameters to print registers, or even the heap contents in the VM. Others commands take a parameter of 2 or 4 bytes, so let's extend the static we defined before and print a 16 bit value as hex:
 
-```
+{% highlight rust %}
 #[no_mangle]
 #[allow(non_upper_case_globals)]
 static mut debugbuf1: [u8; 5] = [0, 0, 0, 0, 0];
@@ -272,7 +273,7 @@ fn main() -> ! {
         arduino_hal::delay_ms(1000);
     }
 }
-```
+{% endhighlight %}
 
 ![Fifth, succesful, attempt](/assets/img/2024-05-10-try5.png)
 
@@ -290,7 +291,8 @@ The other variants for signed and unsigned 8, 16 or 32 bit values follow the sam
 When developing the VM, we don't want to be copying these lines over and over again. It would be much nicer to have a module with convenient functions for all of the interactions we will have with the simulator (various tracing calls will be added later). So let's make one.
 
 We can make a module by simply creating a file called either `avrora.rs` or `avrora/mod.rs`. Including some refactoring that will make it easier to add the other kinds of print commands, it looks like this:
-```
+
+{% highlight rust %}
 use core::ptr::{addr_of_mut, write_volatile};
 
 const AVRORA_PRINT_2BYTE_HEXADECIMALS: u8        = 0x1;
@@ -325,13 +327,13 @@ pub fn print_u16_hex(val: u16) {
 pub fn print_all_regs() {
     signal_avrora_c_print(AVRORA_PRINT_REGS);
 }
-```
+{% endhighlight %}
 
 The `allow(dead_code)` is necessary to prevent the compiler from complaining when we don't use a particular debug print. The code won't be included in the final binary if it's not used.
 
 With this, the main file becomes nice and clean, and free of any `unsafe` code:
 
-```
+{% highlight rust %}
 #![no_std]
 #![no_main]
 
@@ -348,7 +350,7 @@ fn main() -> ! {
         arduino_hal::delay_ms(1000);
     }
 }
-```
+{% endhighlight %}
 
 Further extending the module to print 8, 16 and 32 bit signed or unsigned numbers is straightforward, but printing strings requires some special tricks.
 
@@ -357,13 +359,13 @@ Further extending the module to print 8, 16 and 32 bit signed or unsigned number
 
 Avrora's c-print monitor has several ways to print strings. The easiest is quite straightforward:
 
-```
+{% highlight rust %}
 /// Uses Avrora's c-print monitor to print a string from RAM
 #[allow(dead_code)]
 pub fn print_ram_string(s: &str) {
     signal_avrora_c_print_16(AVRORA_PRINT_STRING_POINTERS, s.as_ptr() as u16);
 }
-```
+{% endhighlight %}
 
 We pass a reference to a string slice, take the address using `.as_ptr()` and cast this to a 16 bit int to use as the parameter for the monitor call.
 
@@ -381,13 +383,13 @@ There is a small performance penalty for reading from flash memory on the AVR: `
 
 The call to print from flash is almost identical, but with a different command and a 32 bit address since the flash address range is larger:
 
-```
+{% highlight rust %}
 /// Uses Avrora's c-print monitor to print a string from flash memory
 #[allow(dead_code)]
 pub fn print_flash_string(addr: u32) {
     signal_avrora_c_print_32(AVRORA_PRINT_FLASH_STRING_POINTER, addr);
 }
-```
+{% endhighlight %}
 
 But how do we get the string into flash? Luckily there's a crate called [avr_progmem](https://docs.rs/avr-progmem/latest/avr_progmem) to do this.
 
@@ -397,12 +399,12 @@ First, install it using Cargo:
 
 This gives us a new macro, `progmem!`, that can be used to place data in flash. The crate also offers convenient ways to read from flash memory without having to resort to assembly that may come in handy later. With it, we can put data in flash like this:
 
-```
+{% highlight rust %}
 progmem! {
     static progmem string HELLO = "Hello, World!\0";
 }
 avrora::print_flash_string(HELLO.as_bytes().as_ptr() as u32);
-```
+{% endhighlight %}
 
 The static `HELLO` becomes a `PmString<_>`, from which we can a reference to the bytes as `&ProgMem<[u8; _]>`, from which we can get a raw `*const T` pointer, that can be cast to a `u32` containing the address. The `\0` is necessary to terminate the string since Avrora expects a null-terminated string. Without it, it will print garbage until it encounters the first `\0`.
 
@@ -413,7 +415,7 @@ This works, but is quite verbose for just a debug print. It would be nice if we 
 
 We can't using do this normal Rust functions, but we can achieve almost the same with a macro:
 
-```
+{% highlight rust %}
 /// Uses Avrora's c-print monitor to print a string from flash memory
 #[allow(unused_macros)]
 #[macro_export]
@@ -438,7 +440,7 @@ pub fn print_flash_string<const N: usize>(string_in_progmem: PmString<N>) {
         AVRORA_PRINT_FLASH_STRING_POINTER,
         string_in_progmem.as_bytes().as_ptr() as u32);
 }
-```
+{% endhighlight %}
 
 There is a lot to learn about macros, but so far I only skipped ahead in 'Programming Rust' to the macro chapter to learn just enough to make this work.
 
@@ -457,9 +459,9 @@ Why is this important? Without the extra braces, two print statements in a row w
 ![AVRORA_PROGMEMSTRING name mangling](/assets/img/2024-05-10-progmemstring-name-mangling.png)
 
 We can now use the macro almost like the other print functions:
-```
+{% highlight rust %}
 print_flash_string!("Hello, World from flash memory!");
-```
+{% endhighlight %}
 
 ![Hello world from flash](/assets/img/2024-05-10-hello-world2.png)
 
