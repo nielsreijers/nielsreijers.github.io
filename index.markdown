@@ -3,4 +3,12 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+title: Hello!
+exclude: true
 ---
+
+Welcome to my site!
+
+I'm a software developer who splits his time between Taipei and Rotterdam.
+
+This is the place where I share thoughts, random experiences and unfiltered opinions on what I love doing for a living: programming!

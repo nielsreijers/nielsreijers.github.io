@@ -7,7 +7,23 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
+
+  <div style="display: flex;"">
+    <div style="width: 70%;">{{ content }}</div>
+    <div style="width: 10%;"></div>
+    <div style="width: 20%; border-left: 1rem;">
+      <img src="https://www.nielsreijers.com/home/me1.jpg" id="my-photo">
+      <script>
+        var imgArr = ["me1.jpg", "me2.jpg", "me3.jpg", "me4.jpg", "me5.jpg"];
+        var randomPhoto = imgArr[Math.floor(Math.random() * imgArr.length)];
+        var img = document.getElementById('my-photo');
+        img.setAttribute('src', '/assets/me/' + randomPhoto);
+      </script>
+    </div>
+  </div>
+
+
+
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Latests blog post" }}</h2>
