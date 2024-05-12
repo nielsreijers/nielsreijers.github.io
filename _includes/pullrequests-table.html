@@ -1,0 +1,16 @@
+<table class="pullrequests">
+    <tr>
+        <th>Opened</th>
+        <th>Merged</th> 
+        <th>Repository</th>
+        <th>Title</th>
+    </tr>
+    {%- for pr in site.data.pullrequests limit:include.count -%}
+    <tr>
+        <td class="pullrequest-date">{{ pr.opened }}</td>
+        <td class="pullrequest-date">{{ pr.merged }}</td>
+        <td>{{ pr.url | remove: 'https://github.com/' | regex_replace: '\/pull\/.*', '' }}</td>
+        <td><a href="{{ pr.url }}">{{ pr.title }}</a></td>
+    </tr>
+    {%- endfor -%}
+</table>

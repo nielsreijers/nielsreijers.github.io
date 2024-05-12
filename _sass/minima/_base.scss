@@ -265,3 +265,15 @@ table {
     border: 1px solid $grey-color-light;
   }
 }
+
+/**
+ * Pull requests
+ */
+.pullrequests {
+  font-size: 0.7rem;
+}
+.pullrequest-date {
+  white-space: nowrap;
+  padding: 5px;
+  font-size: 0.6rem;
+}

@@ -10,8 +10,8 @@ layout: default
 
   <div style="display: flex;"">
     <div style="width: 70%;">{{ content }}</div>
-    <div style="width: 10%;"></div>
-    <div style="width: 20%; border-left: 1rem;">
+    <div style="width: 15%;"></div>
+    <div style="width: 15%; border-left: 1rem;">
       <img src="https://www.nielsreijers.com/home/me1.jpg" id="my-photo">
       <script>
         var imgArr = ["me1.jpg", "me2.jpg", "me3.jpg", "me4.jpg", "me5.jpg"];
@@ -22,29 +22,14 @@ layout: default
     </div>
   </div>
 
-
-
-
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Latests blog post" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts limit:1 -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+    <h2 class="post-list-heading">Latest blog posts</h2>
+    {%- include blog-list.html count="2" -%}
+  {%- endif -%}
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- if site.data.pullrequests.size > 0 -%}
+    <h2 class="post-list-heading">Latest pull requests</h2>
+    {%- include pullrequests-table.html count="2" -%}
   {%- endif -%}
 
 </div>

@@ -33,6 +33,7 @@ linkedin_username: niels-reijers-4609602
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-regex-replace
 
 # Exclude from processing.
 # The following items will not be processed, by default.
