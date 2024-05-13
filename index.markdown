@@ -7,7 +7,7 @@ title: Hello!
 exclude: true
 ---
 
-Welcome to my site!
+<h2 style="margin-top: 0px;" class="post-list-heading">Welcome to my site!</h2>
 
 I'm a software developer who splits his time between Taipei and Rotterdam.
 
