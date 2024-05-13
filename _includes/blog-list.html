@@ -15,5 +15,12 @@
     </li>
     {%- endfor -%}
 </ul>
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+<p class="feed-subscribe">
+    <a href="{{ "/feed.xml" | relative_url }}">
+        <svg class="rss-icon">
+            <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+        </svg><span>Subscribe</span>
+    </a>
+</p>
 </div>
