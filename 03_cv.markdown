@@ -11,10 +11,10 @@ navigation_weight: 3
             <img src="/assets/cv/cv.png" width="200">
         </td>
         <td>
-            <a href="/assets/cv/NielsReijers-single-page.pdf">Single page version</a>
+            <a href="/cv/NielsReijers-single-page.pdf">Single page version</a>
             <br>
             <br>
-            <a href="/assets/cv/NielsReijers-full-version.pdf">Full version</a>
+            <a href="/cv/NielsReijers-full-version.pdf">Full version</a>
         </td>
     </tr>
 </table>
