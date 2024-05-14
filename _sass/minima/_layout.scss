@@ -281,4 +281,10 @@ html {
       @include relative-font-size(1.125);
     }
   }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
