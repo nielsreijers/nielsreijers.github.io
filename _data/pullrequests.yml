@@ -1,3 +1,13 @@
+# - opened: 
+#   merged: 
+#   title:  
+#   url:    
+
+- opened: 2024-05-14
+  merged: 
+  title:  Add newline to prepended name and compatibility_date in wrangler.toml
+  url:    https://github.com/cloudflare/workers-sdk/pull/5816
+
 - opened: 2024-04-09
   merged: 2024-04-12
   title:  "[cli] Make the --verbosity option case insensitive"
@@ -43,8 +53,4 @@
   title:  Fix fallback to alternate subdirectories in get_internal_lid_state
   url:    https://github.com/pop-os/hidpi-daemon/pull/47
 
-# - opened: 
-#   merged: 
-#   title:  
-#   url:    
 
