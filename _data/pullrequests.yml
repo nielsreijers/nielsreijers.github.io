@@ -3,6 +3,11 @@
 #   title:  
 #   url:    
 
+- opened: 2024-05-15
+  merged: 
+  title:  Fix the worker-speedtest template (#5830)
+  url:    https://github.com/cloudflare/workers-sdk/pull/5840
+
 - opened: 2024-05-14
   merged: 
   title:  Add newline to prepended name and compatibility_date in wrangler.toml
