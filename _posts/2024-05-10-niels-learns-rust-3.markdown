@@ -425,7 +425,7 @@ macro_rules! print_flash_string {
         progmem! {
             static progmem string AVRORA_PROGMEMSTRING = concat!($s, "\0");
         }
-        avrora::print_flash_string(AVRORA_PROGMEMSTRING);
+        avrora::print_flash_string_fn(AVRORA_PROGMEMSTRING);
     } };
 }
 
@@ -435,7 +435,7 @@ macro_rules! print_flash_string {
 /// conveniently store a string in flash memory and create the
 /// required PmString.
 #[allow(dead_code)]
-pub fn print_flash_string<const N: usize>(string_in_progmem: PmString<N>) {
+pub fn print_flash_string_fn<const N: usize>(string_in_progmem: PmString<N>) {
     signal_avrora_c_print_32(
         AVRORA_PRINT_FLASH_STRING_POINTER,
         string_in_progmem.as_bytes().as_ptr() as u32);
@@ -465,11 +465,42 @@ print_flash_string!("Hello, World from flash memory!");
 
 ![Hello world from flash](/assets/img/2024-05-10-hello-world2.png)
 
-The only difference is that macro are directly available in the namespace and can't be prefixed with `avrora::`, which is a pity because for a new developer just typing `avrora::` and seeing what pops up in the IDE makes it easy to find out what options are available.
+~~The only difference is that macro are directly available in the namespace and can't be prefixed with `avrora::`, which is a pity because for a new developer just typing `avrora::` and seeing what pops up in the IDE makes it easy to find out what options are available.~~
 
-This was the main reason to keep the names of the macro and function the same and have the triple slash documentation on the function direct the user to the corresponding macro.
+~~This was the main reason to keep the names of the macro and function the same and have the triple slash documentation on the function direct the user to the corresponding macro.~~
 
-Note also that the macro is expanded in the code where it is used, which means it does not have access to the private functions in the avrora module. So we need some public entrypoint exposed for the macro to call and this seemed the cleanest way to do so.
+~~Note also that the macro is expanded in the code where it is used, which means it does not have access to the private functions in the avrora module. So we need some public entrypoint exposed for the macro to call and this seemed the cleanest way to do so.~~
+
+
+## EDIT 2024-05-16
+
+Since this is a learning project, sometimes you realise you get things wrong. Well that didn't take long.
+
+The first version of the macro worked, but the fact that the call couldn't be prefixed with `avrora::` felt a bit wrong, and when I wanted to use it from another module, I discovered the macro needed to be imported separately as `use avrora::print_flash_string`. Yuck.
+
+It turns out there are two better ways to make the macro available to other modules. First, I could have replaced the `mod avrora` in my main.rs with this:
+
+{% highlight rust %}
+#[macro_use]
+mod avrora;
+{% endhighlight %}
+
+This makes the macro available in all the modules in the crate. But it still ends up in the global namespace, while I would prefer to be able to have it under `avrora::` with all the other print functions. The [way to do this](https://stackoverflow.com/questions/26731243/how-do-i-use-a-macro-across-module-files) is to add the following lines in the avrora module, which exports it along with the `pub` functions to anyone who imports the module.
+
+{% highlight rust %}
+// Export the macro so it can be used as 'avrora::print_flash_string!'
+#[allow(unused_imports)]
+pub(crate) use print_flash_string;
+{% endhighlight %}
+
+It feels a bit odd to have to `use` something in the module it is defined in. To be honest, this part of Rust feels like the design changed a few times and some old options had to be maintained for backwards compatibility. Note also that the macro is expanded in the code where it is used, so it does not have access to the private functions in the avrora module. This means we need some public entrypoint exposed for the macro to call, which is why there is an accompanying `print_flash_string_fn` function.
+
+Now it works the way I want it to work, and we can call `print_flash_string` scoped to the `avrora` module so it can be easily found:
+
+{% highlight rust %}
+avrora::print_flash_string!("Hello, World from flash memory!");
+{% endhighlight %}
+
 
 
 ## Recap
