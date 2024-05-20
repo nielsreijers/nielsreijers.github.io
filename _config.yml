@@ -27,6 +27,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  nielsreijers
 linkedin_username: niels-reijers-4609602
+stackoverflow_username: 19592347/niels-reijers
+
 # Build settings
 # 20240511 Niels Reijers: minima theme was pulled into the repository
 #theme: minima
