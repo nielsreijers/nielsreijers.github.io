@@ -1,0 +1,5 @@
+    <span class="tag-links">
+      {%- for tag in include.tags -%}
+      <a href="/blog/tag/{{ tag }}">[{{ tag }}]</a>
+      {%- endfor -%}
+    </span>

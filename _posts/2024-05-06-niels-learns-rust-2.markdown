@@ -3,6 +3,7 @@ layout: post
 title:  "Niels learns Rust 2 — Getting started with AVR Rust"
 date:   2024-05-06 00:00:00 +0000
 categories: blog
+tags: rust
 ---
 
 This is part 2 of a series documenting my journey to learn Rust by porting my embedded Java virtual machine to it.

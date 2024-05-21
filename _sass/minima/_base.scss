@@ -289,3 +289,16 @@ table {
   fill: currentColor;
   vertical-align: text-bottom;
 }
+
+.tag-links a {
+  padding: 4px 16px;
+  background-color: #ffffff;
+  color: #919191;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 15px;
+  display: inline-block;
+  margin: 0 3px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

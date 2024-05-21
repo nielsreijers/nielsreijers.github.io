@@ -19,6 +19,14 @@ layout: default
     {{ content }}
   </div>
 
+  {%- if page.tags.size > 0 -%}
+  <div>
+    <p>
+    Tags: {%- include tag-list.html tags=page.tags -%}
+    </p>
+  </div>
+  {%- endif -%}
+
   {%- include subscribe-rss-feed.html -%}
 
   {%- if site.disqus.shortname -%}

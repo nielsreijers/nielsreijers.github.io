@@ -4,4 +4,4 @@ title: Blog
 permalink: /blog/
 ---
 
-{%- include blog-list.html count="2000" -%}
+{%- include blog-list.html posts=site.posts count="2000" -%}

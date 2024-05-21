@@ -3,6 +3,7 @@ layout: post
 title:  "Niels learns Rust 3 — Hello world!, global state, and flash memory"
 date:   2024-05-10 00:00:00 +0000
 categories: blog
+tags: rust
 ---
 
 This is part 3 of a series documenting my journey to learn Rust by porting my embedded Java virtual machine to it.

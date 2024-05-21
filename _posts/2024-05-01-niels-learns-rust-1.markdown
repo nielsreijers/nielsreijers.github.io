@@ -3,6 +3,7 @@ layout: post
 title:  "Niels learns Rust 1 — Why Rust?"
 date:   2024-05-01 11:18:36 +0800
 categories: blog
+tags: rust
 ---
 
 I love learning new programming languages. A while ago, I made a list of all the languages I ever worked with, and got to 33. BBC Basic was my first, Scala the most recent addition.

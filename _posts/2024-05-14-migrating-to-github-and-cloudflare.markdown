@@ -3,6 +3,7 @@ layout: post
 title:  "Migrating my site to GitHub and Cloudflare"
 date:   2024-05-14 00:00:00 +0000
 categories: blog
+tags: web
 ---
 
 ![GitHub Cloudflare logos](/assets/img/2024-05-14-github-cloudflare-logos2.png)

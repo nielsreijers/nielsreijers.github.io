@@ -24,7 +24,7 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">Latest blog posts</h2>
-    {%- include blog-list.html count="2" -%}
+    {%- include blog-list.html posts=site.posts count="2" -%}
   {%- endif -%}
 
   {%- if site.data.pullrequests.size > 0 -%}

@@ -37,6 +37,14 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-regex-replace
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - tags
+  layout: archive
+  permalinks:
+    tag: '/blog/tag/:name/'
 
 # Exclude from processing.
 # The following items will not be processed, by default.
