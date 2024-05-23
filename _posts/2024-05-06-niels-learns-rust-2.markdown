@@ -6,7 +6,8 @@ categories: blog
 tags: rust
 ---
 
-This is part 2 of a series documenting my journey to learn Rust by porting my embedded Java virtual machine to it.
+*This is part 2 in my journey to learn Rust by porting my embedded Java virtual machine to it.
+Click [here](/blog/tag/rust) for the whole series.*
 
 ## Installing Rust in a dev container
 

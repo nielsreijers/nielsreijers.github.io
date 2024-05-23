@@ -6,6 +6,10 @@ categories: blog
 tags: rust
 ---
 
+*This is part 1 in my journey to learn Rust by porting my embedded Java virtual machine to it.
+Click [here](/blog/tag/rust) for the whole series.*
+
+
 I love learning new programming languages. A while ago, I made a list of all the languages I ever worked with, and got to 33. BBC Basic was my first, Scala the most recent addition.
 
 In this series of posts I plan to describe my journey to add number 34: Rust.

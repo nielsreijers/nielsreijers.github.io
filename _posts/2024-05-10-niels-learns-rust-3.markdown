@@ -6,7 +6,8 @@ categories: blog
 tags: rust
 ---
 
-This is part 3 of a series documenting my journey to learn Rust by porting my embedded Java virtual machine to it.
+*This is part 3 in my journey to learn Rust by porting my embedded Java virtual machine to it.
+Click [here](/blog/tag/rust) for the whole series.*
 
 After the last step we can compile Rust code for the target platform, the AVR family of embedded CPUs, specifically the ATmega128, and run the resulting binary in the Avrora AVR simulator. But it can't print any output yet.
 
