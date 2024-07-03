@@ -4,7 +4,7 @@
 #   url:    
 
 - opened: 2024-05-15
-  merged: 
+  merged: 2024-07-03
   title:  Fix the worker-speedtest template (#5830)
   url:    https://github.com/cloudflare/workers-sdk/pull/5840
 
