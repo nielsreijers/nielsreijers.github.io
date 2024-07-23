@@ -19,7 +19,7 @@
   url:    https://github.com/canonical/multipass/pull/3474
   
 - opened: 2024-04-09
-  merged:
+  merged: 2024-06-03
   title:  Added libgl1-mesa-dev as a dependency to debian/control
   url:    https://github.com/canonical/multipass/pull/3475
   
