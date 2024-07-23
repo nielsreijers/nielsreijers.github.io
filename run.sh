@@ -9,5 +9,5 @@
 # it, and I'm not sure if it would work with the rbenv version
 # if I put that first in my normal PATH)
 
-export PATH=$(rbenv which bundle | xargs dirname):$PATH
+#export PATH=$(rbenv which bundle | xargs dirname):$PATH
 bundle exec jekyll serve
