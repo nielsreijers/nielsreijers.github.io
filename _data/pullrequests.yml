@@ -3,6 +3,11 @@
 #   title:  
 #   url:    
 
+- opened: 2024-09-04
+  merged: 
+  title:  Add 'unlock-dialog' to prevent disable() call when the screen is locked
+  url:    https://github.com/alecdotninja/no-titlebar-when-maximized/pull/22
+
 - opened: 2024-05-15
   merged: 2024-07-03
   title:  Fix the worker-speedtest template (#5830)
