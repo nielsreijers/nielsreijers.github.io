@@ -21,11 +21,11 @@ navigation_weight: 4
 		<img src="/assets/contact/email.png" width="75">
 	</a>
 	<br>
-	<img src="/assets/contact/address.png" width="250">
+	<img src="/assets/contact/emailaddress.png" width="250">
 </div>
 
 <script>
-	const emailAddress = atob("bWFpbHRvOm5pZWxzcmVpamVyc0BnbWFpbC5jb20");
+	const emailAddress = atob("bWFpbHRvOm5pZWxzQG5pZWxzcmVpamVycy5jb20=");
 
 	// Select all links with the attribute 'data-gen-email'
 	const emailLinks = document.querySelectorAll('[data-gen-email]');
