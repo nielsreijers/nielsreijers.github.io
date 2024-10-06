@@ -4,7 +4,7 @@
 #   url:    
 
 - opened: 2024-09-04
-  merged: 
+  merged: 2024-10-04
   title:  Add 'unlock-dialog' to prevent disable() call when the screen is locked
   url:    https://github.com/alecdotninja/no-titlebar-when-maximized/pull/22
 
