@@ -1,0 +1,65 @@
+# - opened: 
+#   closed: 
+#   title:  
+#   url:    
+
+- opened: 2024-10-30
+  closed: 
+  title:  celery multi start not working in a Docker container
+  url:    https://github.com/celery/celery/issues/9390
+
+- opened: 2024-10-15
+  closed: 
+  title:  SummingMergeTree not aggregating records after dropping an ORDER BY column
+  url:    https://github.com/ClickHouse/ClickHouse/issues/70667
+
+- opened: 2024-10-08
+  closed: 
+  title:  Renaming a table doesn't work for databases that are mapped to another name in ClickHouse
+  url:    https://github.com/Altinity/clickhouse-sink-connector/issues/861
+
+- opened: 2024-10-08
+  closed: 
+  title:  Statements synced out of order and executed twice
+  url:    https://github.com/Altinity/clickhouse-sink-connector/issues/860
+
+- opened: 2024-05-15
+  closed: 2024-07-03
+  title:  BUG&colon; worker-speedtest template can't be deployed
+  url:    https://github.com/cloudflare/workers-sdk/issues/5830
+
+- opened: 2024-04-09
+  closed: 2024-08-02
+  title:  Building a forked repository doesn't work because of missing tags
+  url:    https://github.com/canonical/multipass/issues/3476
+
+- opened: 2024-04-06
+  closed: 2024-04-12
+  title:  Small improvement&colon; make --verbosity &lt;level&gt; case insensitive
+  url:    https://github.com/canonical/multipass/issues/3467
+
+- opened: 2024-04-06
+  closed: 
+  title:  CLI dies because of mac_addr mismatch
+  url:    https://github.com/canonical/multipass/issues/3469
+
+- opened: 2024-04-06
+  closed: 
+  title:  Automatically add iptables rules when necessary for mbpr0
+  url:    https://github.com/canonical/multipass/issues/3468
+
+- opened: 2024-02-06
+  closed: 2024-02-09
+  title:  -XX:MaxPermSize=size produces an error in JDK 17
+  url:    https://github.com/holdenk/sparkProjectTemplate.g8/issues/25
+
+- opened: 2024-01-11
+  closed: 
+  title:  Outdated versioneer.py broken for Python 3.12
+  url:    https://github.com/vericast/spylon/issues/56
+
+- opened: 2024-01-11
+  closed: 
+  title:  Outdated versioneer.py broken for Python 3.12
+  url:    https://github.com/vericast/spylon-kernel/issues/70
+
