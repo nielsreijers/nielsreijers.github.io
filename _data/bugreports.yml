@@ -3,6 +3,16 @@
 #   title:  
 #   url:    
 
+- opened: 2024-11-24
+  closed: 
+  title:  leadInFrame only produces default values when using OVER (ORDER BY ...), but works for OVER ()
+  url:    https://github.com/ClickHouse/ClickHouse/issues/72354
+
+- opened: 2024-11-15
+  closed: 
+  title:  Old max_memory_usage_for_user being used (in distributed query) after confirming on the server the new limit was active
+  url:    https://github.com/ClickHouse/ClickHouse/issues/71957
+
 - opened: 2024-10-30
   closed: 
   title:  celery multi start not working in a Docker container
