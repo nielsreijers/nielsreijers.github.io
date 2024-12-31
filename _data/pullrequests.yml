@@ -3,6 +3,11 @@
 #   title:  
 #   url:    
 
+- opened: 2024-12-31
+  merged: 2024-12-31
+  title:  Strip db name from token in create table queries (#70)
+  url:    https://github.com/bakwc/mysql_ch_replicator/pull/71
+
 - opened: 2024-09-04
   merged: 2024-10-04
   title:  Add 'unlock-dialog' to prevent disable() call when the screen is locked
@@ -14,8 +19,8 @@
   url:    https://github.com/cloudflare/workers-sdk/pull/5840
 
 - opened: 2024-05-14
-  merged: 
-  title:  Add newline to prepended name and compatibility_date in wrangler.toml
+  merged: 2024-12-10
+  title:  Add newline to prepended name and compatibility_date in wrangler.toml (closed)
   url:    https://github.com/cloudflare/workers-sdk/pull/5816
 
 - opened: 2024-04-09
