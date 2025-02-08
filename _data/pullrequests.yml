@@ -3,6 +3,26 @@
 #   title:  
 #   url:    
 
+- opened: 2025-02-04
+  merged: 2025-02-04
+  title:  Fix erase statistics #103
+  url:    https://github.com/bakwc/mysql_ch_replicator/pull/103
+
+- opened: 2025-01-08
+  merged: 2025-01-09
+  title:  Add support for "ALTER TABLE t COLUMN c INT FIRST", and fix bug when primary key columns move. #79
+  url:    https://github.com/bakwc/mysql_ch_replicator/pull/79
+
+- opened: 2025-01-06
+  merged: 2025-01-07
+  title:  Fix percona migration #78
+  url:    https://github.com/bakwc/mysql_ch_replicator/pull/78
+
+- opened: 2025-01-03
+  merged: 2025-01-04
+  title:  Fix create drop table if exists #75
+  url:    https://github.com/bakwc/mysql_ch_replicator/pull/75
+
 - opened: 2024-12-31
   merged: 2024-12-31
   title:  Strip db name from token in create table queries (#70)
